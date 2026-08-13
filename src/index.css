@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: 'Cinzel', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+@keyframes pondWaterGradient {
+  0% {
+    background-position: 0% 0%, 100% 0%, 50% 100%, 0% 50%;
+  }
+  25% {
+    background-position: 70% 30%, 30% 70%, 90% 20%, 20% 80%;
+  }
+  50% {
+    background-position: 100% 100%, 0% 100%, 0% 0%, 100% 0%;
+  }
+  75% {
+    background-position: 30% 70%, 70% 30%, 20% 80%, 80% 20%;
+  }
+  100% {
+    background-position: 0% 0%, 100% 0%, 50% 100%, 0% 50%;
+  }
+}
+
+.animate-moving-gradient {
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(139, 21, 56, 0.35) 0%, rgba(248, 250, 252, 0) 55%),
+    radial-gradient(circle at 75% 75%, #ffffff 0%, rgba(226, 232, 240, 0.6) 45%, rgba(248, 250, 252, 0) 70%),
+    radial-gradient(circle at 50% 30%, rgba(163, 29, 69, 0.25) 0%, rgba(241, 245, 249, 0) 60%),
+    linear-gradient(135deg, #ffffff 0%, #f1f5f9 25%, #e2e8f0 50%, #f8fafc 75%, #ffffff 100%);
+  background-size: 220% 220%, 200% 200%, 240% 240%, 300% 300%;
+  animation: pondWaterGradient 8s ease-in-out infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8b1538;
+}

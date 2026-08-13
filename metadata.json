@@ -1,0 +1,6 @@
+{
+  "name": "Yoshida Shokanji International School",
+  "description": "Modernized official web platform for Yoshida Shokanji International School featuring 3D shader visuals, interactive campus location maps, stats, achievements, and management portal.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
