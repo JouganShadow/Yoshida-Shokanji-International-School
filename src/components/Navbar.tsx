@@ -107,11 +107,11 @@ export const Navbar: React.FC = () => {
         <div className="flex items-center gap-3 sm:gap-4">
           {/* Quick Telephone */}
           <a
-            href="tel:+94112962300"
+            href="tel:+94112401469"
             className="hidden sm:flex items-center gap-2 text-xs font-black text-slate-950 hover:text-[#8B1538] transition-colors bg-white px-3 py-1.5 rounded-xl border-2 border-slate-950 shadow-[2px_2px_0px_0px_rgba(15,23,42,1)]"
           >
             <Phone className="w-3.5 h-3.5 text-[#8B1538]" />
-            <span>+94 11 296 2300</span>
+            <span>011 2401469</span>
           </a>
 
           {/* Admissions button redirects to #/contact page */}
@@ -161,11 +161,11 @@ export const Navbar: React.FC = () => {
 
           <div className="pt-2 border-t border-slate-200 flex flex-col gap-2">
             <a
-              href="tel:+94112962300"
+              href="tel:+94112401469"
               className="w-full py-2.5 text-center text-xs font-bold text-slate-800 bg-slate-50 rounded-lg border-2 border-slate-200 flex items-center justify-center gap-2"
             >
               <Phone className="w-3.5 h-3.5 text-[#8B1538]" />
-              <span>Hotline: +94 11 296 2300</span>
+              <span>Hotline: 011 2401469 / 077 1924546</span>
             </a>
           </div>
         </div>

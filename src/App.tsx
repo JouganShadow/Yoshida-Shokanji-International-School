@@ -261,11 +261,11 @@ export default function App() {
                   <div className="pt-4 border-t border-slate-100 space-y-2 text-xs font-semibold text-slate-800 text-left">
                     <div className="flex items-center gap-2">
                       <PhoneCall className="w-4 h-4 text-[#8B1538]" />
-                      <span>+94 11 296 2300 (Ext. 101)</span>
+                      <span>077 1924546 / 076 4609804</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Mail className="w-4 h-4 text-[#8B1538]" />
-                      <span className="text-slate-950">admissions@yoshida.edu.lk</span>
+                      <span className="text-slate-950">info@yoshida.edu.lk</span>
                     </div>
                   </div>
                 </div>
@@ -284,11 +284,11 @@ export default function App() {
                   <div className="pt-4 border-t border-slate-100 space-y-2 text-xs font-semibold text-slate-800 text-left">
                     <div className="flex items-center gap-2">
                       <PhoneCall className="w-4 h-4 text-[#8B1538]" />
-                      <span>+94 11 296 2300 (Ext. 104)</span>
+                      <span>011 2401469 / 011 2400632</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Mail className="w-4 h-4 text-[#8B1538]" />
-                      <span className="text-slate-950">info@yoshida.edu.lk</span>
+                      <span className="text-slate-950">yoshida1950@sltnet.lk</span>
                     </div>
                   </div>
                 </div>
@@ -307,11 +307,11 @@ export default function App() {
                   <div className="pt-4 border-t border-slate-100 space-y-2 text-xs font-semibold text-slate-800 text-left">
                     <div className="flex items-center gap-2">
                       <PhoneCall className="w-4 h-4 text-[#8B1538]" />
-                      <span>+94 11 296 2500</span>
+                      <span>011 2401469 (Ext. Sports)</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Mail className="w-4 h-4 text-[#8B1538]" />
-                      <span className="text-slate-950">sports@yoshida.edu.lk</span>
+                      <span className="text-slate-950">info@yoshida.edu.lk</span>
                     </div>
                   </div>
                 </div>
@@ -329,7 +329,7 @@ export default function App() {
                   </div>
                 </div>
                 <div className="text-xs font-mono font-bold bg-white/10 px-4 py-2 rounded-lg border border-white/20">
-                  Mon - Fri: 8:00 AM - 3:30 PM | Sat: 8:30 AM - 12:30 PM (Admissions Only)
+                  Mon - Fri: 7:30 AM - 3:30 PM | Sat: 8:30 AM - 12:30 PM (Admissions Only)
                 </div>
               </div>
             </motion.div>

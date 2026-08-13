@@ -63,8 +63,8 @@ export const ContactFooter: React.FC = () => {
               </div>
               <p className="text-xs text-slate-700 leading-relaxed font-medium">
                 Yoshida Shokanji International School,<br />
-                Sapugaskanda Road, Makola / Kelaniya,<br />
-                Gampaha District, Sri Lanka.
+                Takiko Yoshida Mawatha, Sapugaskanda,<br />
+                Makola, Sri Lanka.
               </p>
               <div className="text-[11px] text-slate-600 font-mono font-semibold">
                 GPS: 6.96876° N, 79.95856° E
@@ -80,17 +80,17 @@ export const ContactFooter: React.FC = () => {
                 <span>Phone & Admissions</span>
               </div>
               <div className="space-y-2 text-xs text-slate-800 font-mono font-semibold">
-                <a href="tel:+94112962300" className="flex items-center gap-2 hover:text-[#8B1538] transition-colors">
+                <a href="tel:+94112401469" className="flex items-center gap-2 hover:text-[#8B1538] transition-colors">
                   <Phone className="w-3.5 h-3.5 text-[#8B1538] shrink-0" />
-                  <span>+94 11 296 2300</span>
+                  <span>011 2401469 / 011 2400632</span>
                 </a>
-                <a href="tel:+94112962301" className="flex items-center gap-2 hover:text-[#8B1538] transition-colors">
+                <a href="https://wa.me/94771924546" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-[#8B1538] transition-colors">
                   <Phone className="w-3.5 h-3.5 text-[#8B1538] shrink-0" />
-                  <span>+94 11 296 2301</span>
+                  <span>077 1924546 (Call / WhatsApp)</span>
                 </a>
-                <a href="tel:+94773123456" className="flex items-center gap-2 hover:text-[#8B1538] transition-colors">
+                <a href="https://wa.me/94764609804" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-[#8B1538] transition-colors">
                   <Phone className="w-3.5 h-3.5 text-[#8B1538] shrink-0" />
-                  <span>+94 77 312 3456 (Hotline)</span>
+                  <span>076 4609804 (Call / WhatsApp)</span>
                 </a>
               </div>
             </div>
@@ -108,13 +108,13 @@ export const ContactFooter: React.FC = () => {
                   <Mail className="w-3.5 h-3.5 text-[#8B1538] shrink-0" />
                   <span>info@yoshida.edu.lk</span>
                 </a>
-                <a href="mailto:admissions@yoshida.edu.lk" className="flex items-center gap-2 hover:text-[#8B1538] transition-colors font-mono font-semibold">
+                <a href="mailto:yoshida1950@sltnet.lk" className="flex items-center gap-2 hover:text-[#8B1538] transition-colors font-mono font-semibold">
                   <Mail className="w-3.5 h-3.5 text-[#8B1538] shrink-0" />
-                  <span>admissions@yoshida.edu.lk</span>
+                  <span>yoshida1950@sltnet.lk</span>
                 </a>
                 <div className="pt-1 flex items-center gap-1.5 text-xs text-slate-700 font-medium">
                   <Clock className="w-3.5 h-3.5 text-[#8B1538] shrink-0" />
-                  <span>Mon-Fri: 7:30 AM - 4:00 PM</span>
+                  <span>Mon-Fri: 7:30 AM - 3:30 PM | Sat: 8:30 AM - 12:30 PM</span>
                 </div>
               </div>
             </div>

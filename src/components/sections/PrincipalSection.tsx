@@ -96,7 +96,7 @@ export const PrincipalSection: React.FC = () => {
           </div>
 
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-slate-950">
-            Message From The <span className="text-[#8B1538]">Principal's Desk</span>
+            Message From The <span className="text-[#8B1538]">Chairman's Desk</span>
           </h2>
 
           <p className="text-slate-800 text-sm sm:text-base leading-relaxed font-medium">
@@ -112,7 +112,7 @@ export const PrincipalSection: React.FC = () => {
             <div className="absolute top-0 right-0 w-96 h-96 bg-[#8B1538]/5 rounded-full blur-3xl pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-80 h-80 bg-rose-100/50 rounded-full blur-2xl pointer-events-none" />
 
-            {/* LEFT COLUMN: PRINCIPAL PORTRAIT & EMBLEM BADGE */}
+            {/* LEFT COLUMN: CHAIRMAN PORTRAIT & EMBLEM BADGE */}
             <div className="lg:col-span-5 flex flex-col items-center text-center space-y-6">
               <div className="relative group">
                 
@@ -122,8 +122,8 @@ export const PrincipalSection: React.FC = () => {
                 {/* Main Portrait Frame */}
                 <div className="relative w-64 h-80 sm:w-72 sm:h-96 rounded-2xl overflow-hidden border-4 border-white shadow-2xl bg-slate-100">
                   <img
-                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=1000"
-                    alt="Principal of Yoshida Shokanji International School"
+                    src="https://yoshida.edu.lk/assets/img/team/5.png"
+                    alt="Most Ven. Banagala Upatissa Nayaka Thero, Chairman & Founder"
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   />
@@ -134,13 +134,13 @@ export const PrincipalSection: React.FC = () => {
                   {/* Name Badge Overlay */}
                   <div className="absolute bottom-4 left-4 right-4 text-left text-white space-y-0.5">
                     <span className="text-[10px] font-mono font-bold text-rose-300 uppercase tracking-widest block">
-                      PRINCIPAL & HEAD OF ACADEMICS
+                      CHAIRMAN & FOUNDER
                     </span>
-                    <h3 className="font-serif font-black text-xl text-white">
-                      Mrs. Jeewana Hewawastham
+                    <h3 className="font-serif font-black text-lg text-white leading-snug">
+                      Most Ven. Banagala Upatissa Nayaka Thero
                     </h3>
                     <p className="text-xs text-slate-200 font-medium">
-                      M.Ed, B.A. (Hons), Higher Dip. in Education
+                      Chief Sangha Nayake of Japan • Chairman, Mahabodhi Society
                     </p>
                   </div>
                 </div>
@@ -153,7 +153,7 @@ export const PrincipalSection: React.FC = () => {
                 {/* Floating Experience Tag */}
                 <div className="absolute -bottom-3 -left-3 bg-[#8B1538] text-white px-4 py-2 rounded-xl text-xs font-bold shadow-lg flex items-center gap-2 z-20">
                   <Award className="w-4 h-4 text-amber-300" />
-                  <span>25+ Yrs Academic Excellence</span>
+                  <span>Est. 2000 in Sapugaskanda</span>
                 </div>
               </div>
 
@@ -161,10 +161,10 @@ export const PrincipalSection: React.FC = () => {
               <div className="pt-2 text-xs text-slate-600 font-medium space-y-1">
                 <span className="inline-flex items-center gap-1.5 font-semibold text-slate-800">
                   <Mail className="w-3.5 h-3.5 text-[#8B1538]" />
-                  <span>principal@yoshida.edu.lk</span>
+                  <span>info@yoshida.edu.lk</span>
                 </span>
                 <p className="font-mono text-[11px] text-slate-500">
-                  Office Hours: Mon - Fri (8:00 AM - 3:30 PM)
+                  Takiko Yoshida Mawatha, Sapugaskanda, Sri Lanka
                 </p>
               </div>
             </div>
@@ -177,18 +177,18 @@ export const PrincipalSection: React.FC = () => {
                 <Quote className="w-8 h-8 text-[#8B1538] opacity-80" />
                 
                 <h3 className="font-serif text-xl sm:text-2xl font-black text-slate-950 leading-snug">
-                  "At Yoshida, education is not merely the transmission of knowledge; it is the ignition of curiosity, character, and lifelong leadership."
+                  "The purpose of establishing Yoshida Shokanji International School in the year 2000 was to provide an opportunity for children to receive an education in the English Medium in a conducive atmosphere consistent with modern educational trends, while preserving Sri Lankan traditional values and cultural heritage."
                 </h3>
 
-                <p className="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed">
-                  Every morning as our students cross the school gates in Sapugaskanda, they step into a vibrant ecosystem designed to nurture both intellect and moral compass.
+                <p className="text-xs sm:text-sm text-slate-700 font-bold leading-relaxed">
+                  — Most Ven. Banagala Upatissa Nayaka Thero (Chairman & Founder)
                 </p>
               </div>
 
               {/* Main Welcome Message Paragraphs */}
               <div className="space-y-4 text-slate-800 text-sm sm:text-base leading-relaxed font-medium">
                 <p>
-                  Welcome to <strong className="text-slate-950">Yoshida Shokanji International School</strong>. Our institution stands as a unique beacon in Sri Lanka’s educational landscape — harmoniously fusing the globally renowned <strong className="text-[#8B1538]">Cambridge International Curriculum</strong> with the timeless discipline, cleanliness, and mutual respect of <strong className="text-[#8B1538]">Japanese educational ethics</strong>.
+                  Welcome to <strong className="text-slate-950">Yoshida Shokanji International School</strong>. Founded under the visionary patronage of the <strong className="text-[#8B1538]">Yoshida Educational and Social Service Foundation</strong> (est. 1979 in partnership with Japanese philanthropist Madam Takiko Yoshida), our institution stands as a unique beacon in Sri Lanka’s educational landscape.
                 </p>
 
                 {/* Collapsible Extended Message */}
@@ -201,14 +201,14 @@ export const PrincipalSection: React.FC = () => {
                     className="space-y-4 pt-2 border-t border-slate-200 text-slate-700"
                   >
                     <p>
-                      We believe every child possesses innate genius waiting to be discovered. Through our small class sizes and dedicated 1:15 teacher-student ratio, our faculty members serve not only as educators but as passionate mentors guiding each student toward top examination results, international sports victories, and compassionate citizenship.
+                      We harmoniously fuse the globally renowned <strong className="text-slate-950">Cambridge International & National Curricula</strong> with the timeless discipline, mutual respect, and moral character of Sri Lankan and Japanese educational ethics.
                     </p>
                     <p>
-                      Whether your child dreams of pioneering in AI robotics, excelling in international Shotokan Karate, or achieving Top-in-the-World Cambridge honors, our campus provides the infrastructure, safety, and encouragement to turn aspirations into reality.
+                      Under the active leadership of Head Master Mr. Sisira De Silva, Chief Advisor Brigadier Udaya Ariyaratne, and our dedicated academic board, we maintain a supportive 1:15 teacher-student ratio. Our campus at Takiko Yoshida Mawatha features state-of-the-art Shotokan Karate Dojo facilities, an Olympic-standard 6-lane aquatic center, science laboratories, and vocational training suites.
                     </p>
                     <div className="p-4 rounded-xl bg-slate-100/90 border border-slate-200 text-xs font-semibold text-slate-900 flex items-center gap-3">
                       <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
-                      <span>Admissions are open for Pre-Nursery, Primary, Cambridge IGCSE, and Advanced Level streams.</span>
+                      <span>Admissions are open for Pre-Nursery, Primary, Cambridge IGCSE, and A-Level streams.</span>
                     </div>
                   </motion.div>
                 )}
