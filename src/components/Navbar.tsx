@@ -42,7 +42,8 @@ export const Navbar: React.FC = () => {
 
   const navLinks = [
     { name: 'Home', href: '#/home', icon: Shield },
-    { name: 'About & Leaders', href: '#/about', icon: GraduationCap },
+    { name: "Principal's Message", href: '#/principal', icon: GraduationCap },
+    { name: 'About & Leaders', href: '#/about', icon: Users },
     { name: 'Academics & Wins', href: '#/academics', icon: Award },
     { name: 'Campus Facilities', href: '#/campus', icon: MapPin },
     { name: 'Admissions & Contact', href: '#/contact', icon: Mail },

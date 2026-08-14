@@ -12,6 +12,7 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { BookOpen, Users, Clock, Languages, Award, Shield, CheckCircle2, ChevronRight, GraduationCap } from 'lucide-react';
 import { SplitTextButton } from '../ui/SplitTextButton';
+import feesImageUrl from '../../assets/images/Fees.jpg';
 
 interface AcademicCourse {
   id: string;
@@ -269,11 +270,14 @@ export const AcademicsSection: React.FC = () => {
           </div>
 
           <div className="shrink-0 z-10">
-            <SplitTextButton
-              href="#contact"
-              text="Download Scholarship Guide"
-              theme="lime"
-            />
+            <a
+              href={feesImageUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-between gap-3 px-5 py-3 rounded-full font-sans text-xs sm:text-sm font-bold tracking-wide uppercase transition-all duration-300 border shadow-lg hover:shadow-xl active:scale-95 bg-lime-400 text-neutral-950 hover:bg-lime-300 border-lime-300/50"
+            >
+              <span>Download Scholarship Guide</span>
+            </a>
           </div>
         </div>
 

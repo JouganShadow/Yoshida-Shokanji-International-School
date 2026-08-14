@@ -20,24 +20,58 @@ export const ContactFooter: React.FC = () => {
   // State for inquiry form submission response feedback
   const [formSubmitted, setFormSubmitted] = useState(false);
 
-  // Controlled form state
+  // Controlled form state with department routing
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     email: '',
     grade: 'Nursery / Playgroup',
+    departmentEmail: 'info@yoshida.edu.lk',
     message: '',
   });
 
-  // Handle form submission
-  const handleSubmit = (e: React.FormEvent) => {
+  // Handle form submission via server backend API to department email
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.phone) return;
-    setFormSubmitted(true);
-    setTimeout(() => {
-      setFormSubmitted(false);
-      setFormData({ name: '', phone: '', email: '', grade: 'Nursery / Playgroup', message: '' });
-    }, 4000);
+
+    setIsSubmitting(true);
+    setSubmitError('');
+
+    try {
+      const response = await fetch('/api/submit-inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setFormSubmitted(true);
+        setTimeout(() => {
+          setFormSubmitted(false);
+          setFormData({
+            name: '',
+            phone: '',
+            email: '',
+            grade: 'Nursery / Playgroup',
+            departmentEmail: 'info@yoshida.edu.lk',
+            message: '',
+          });
+        }, 6000);
+      } else {
+        setSubmitError(data.error || 'Failed to submit inquiry.');
+      }
+    } catch (err) {
+      console.error('Inquiry submission error:', err);
+      setSubmitError('Network error. Please try calling the school directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -131,10 +165,25 @@ export const ContactFooter: React.FC = () => {
               {formSubmitted ? (
                 <div className="p-3 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600" />
-                  <span>Thank you! Admissions office will contact you shortly.</span>
+                  <span>Inquiry successfully transmitted to department inbox! We will contact you soon.</span>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-2">
+                  {submitError && (
+                    <div className="p-2 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-[11px] font-semibold">
+                      {submitError}
+                    </div>
+                  )}
+                  <select
+                    value={formData.departmentEmail}
+                    onChange={(e) => setFormData({ ...formData, departmentEmail: e.target.value })}
+                    className="w-full px-2.5 py-1.5 rounded-xl bg-white border border-slate-300 text-xs text-slate-900 focus:outline-none focus:border-[#8B1538] shadow-sm font-semibold"
+                  >
+                    <option value="info@yoshida.edu.lk">Admissions & General Office (info@yoshida.edu.lk)</option>
+                    <option value="principal@yoshida.edu.lk">Principal's Office (principal@yoshida.edu.lk)</option>
+                    <option value="yoshida1950@sltnet.lk">Accounts & Secretariat (yoshida1950@sltnet.lk)</option>
+                  </select>
+
                   <input
                     type="text"
                     required
@@ -163,11 +212,13 @@ export const ContactFooter: React.FC = () => {
                       <option className="bg-white text-slate-900">A-Levels</option>
                     </select>
                   </div>
-                  <SplitTextButton
-                    text="Submit Quick Inquiry"
-                    theme="maroon"
-                    className="w-full justify-center py-2.5"
-                  />
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full py-2.5 px-4 rounded-xl bg-[#8B1538] text-white text-xs font-bold hover:bg-slate-950 transition-all shadow-[2px_2px_0px_0px_rgba(15,23,42,1)] disabled:opacity-50 flex items-center justify-center gap-2"
+                  >
+                    <span>{isSubmitting ? 'Transmitting Inquiry...' : 'Send Inquiry to Department'}</span>
+                  </button>
                 </form>
               )}
             </div>

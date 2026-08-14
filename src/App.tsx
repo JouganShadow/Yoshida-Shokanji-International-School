@@ -24,6 +24,7 @@ import { LandingHero } from './components/sections/LandingHero';
 import { StatsSection } from './components/sections/StatsSection';
 import { QuoteSection } from './components/sections/QuoteSection';
 import { PrincipalSection } from './components/sections/PrincipalSection';
+import { PrincipalMessagePage } from './components/sections/PrincipalMessagePage';
 import { LocationMapSection } from './components/sections/LocationMapSection';
 import { AchievementsSection } from './components/sections/AchievementsSection';
 import { ManagementSection } from './components/sections/ManagementSection';
@@ -35,13 +36,15 @@ import { SplitTextButton } from './components/ui/SplitTextButton';
 import { Sparkles, ChevronRight, GraduationCap, Building, PhoneCall, Compass, Trophy, Users, Mail, Clock, MapPin } from 'lucide-react';
 
 export default function App() {
-  const [currentRoute, setCurrentRoute] = useState<'home' | 'about' | 'academics' | 'campus' | 'contact'>('home');
+  const [currentRoute, setCurrentRoute] = useState<'home' | 'about' | 'principal' | 'academics' | 'campus' | 'contact'>('home');
 
   // Sync route state with window.location.hash
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash;
-      if (hash.startsWith('#/about') || hash.startsWith('#/principal') || hash.startsWith('#/management')) {
+      if (hash.startsWith('#/principal')) {
+        setCurrentRoute('principal');
+      } else if (hash.startsWith('#/about') || hash.startsWith('#/management')) {
         setCurrentRoute('about');
       } else if (hash.startsWith('#/academics') || hash.startsWith('#/achievements')) {
         setCurrentRoute('academics');
@@ -128,15 +131,15 @@ export default function App() {
                           Message from the <span className="text-[#8B1538]">Principal's Desk</span>
                         </h3>
                         <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
-                          "At Yoshida, education is not merely the transmission of knowledge; it is the ignition of curiosity, character, and lifelong leadership." Join Mrs. Jeewana Hewawastham as she introduces our academic mission.
+                          "Education is the shared commitment between home and school to unlock every child's highest potential." Join Principal Mrs. Buddhini Jayasundera as she introduces our academic mission.
                         </p>
                       </div>
 
                       <a
-                        href="#/about"
+                        href="#/principal"
                         className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border-2 border-slate-950 text-xs font-bold bg-white text-slate-950 hover:bg-[#8B1538] hover:text-white transition-all shadow-[2px_2px_0px_0px_rgba(15,23,42,1)]"
                       >
-                        <span>Read Welcoming Message</span>
+                        <span>Read Principal's Message</span>
                         <ChevronRight className="w-4 h-4" />
                       </a>
                     </div>
@@ -169,6 +172,18 @@ export default function App() {
                   </div>
                 </div>
               </section>
+            </motion.div>
+          )}
+
+          {currentRoute === 'principal' && (
+            <motion.div
+              key="principal-page"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.4 }}
+            >
+              <PrincipalMessagePage />
             </motion.div>
           )}
 
