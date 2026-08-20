@@ -177,7 +177,7 @@ export const QuoteSection: React.FC = () => {
             <div className="hidden sm:block w-px h-8 bg-slate-200 mx-2" />
 
             <SplitTextButton
-              href="#contact"
+              href="#/contact"
               text="Join Our Legacy"
               theme="maroon"
             />

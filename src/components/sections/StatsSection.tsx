@@ -152,7 +152,7 @@ export const StatsSection: React.FC = () => {
             </div>
           </div>
           <SplitTextButton
-            href="#contact"
+            href="#/contact"
             text="Join Us"
             theme="maroon"
             className="shrink-0"
