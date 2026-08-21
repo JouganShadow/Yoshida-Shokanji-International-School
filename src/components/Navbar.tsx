@@ -64,26 +64,34 @@ export const Navbar: React.FC = () => {
           : 'py-4 bg-[#FAF9F6]'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <div className="w-full max-w-[1600px] 2xl:max-w-[1850px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between gap-4">
         
         {/* 1. BRAND LOGO (Left side) */}
-        <a href="#/home" className="flex items-center gap-3 group">
+        <a 
+          href="#/home" 
+          onClick={(e) => {
+            e.preventDefault();
+            window.location.hash = '#/home';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          className="flex items-center gap-3 group shrink-0"
+        >
           <div className="p-1 rounded-xl bg-white border-2 border-slate-950 group-hover:border-[#8B1538] transition-all group-hover:scale-105 shadow-[2px_2px_0px_0px_rgba(15,23,42,1)]">
             <SchoolEmblem className="w-8 h-8 sm:w-10 sm:h-10 text-[#8B1538]" />
           </div>
 
           <div className="flex flex-col justify-center">
-            <span className="font-sans font-black text-xs sm:text-base tracking-tight text-slate-950 leading-tight group-hover:text-[#8B1538] transition-colors uppercase">
+            <span className="font-sans font-black text-xs sm:text-base tracking-tight text-slate-950 leading-tight group-hover:text-[#8B1538] transition-colors uppercase whitespace-nowrap">
               YOSHIDA SHOKANJI
             </span>
-            <span className="font-sans font-extrabold text-[8px] sm:text-[10px] tracking-widest text-slate-600 uppercase leading-none mt-0.5">
+            <span className="font-sans font-extrabold text-[8px] sm:text-[10px] tracking-widest text-slate-600 uppercase leading-none mt-0.5 whitespace-nowrap">
               INTERNATIONAL SCHOOL
             </span>
           </div>
         </a>
 
         {/* 2. DESKTOP NAVIGATION LINKS (Skillshare pill styling) */}
-        <nav className="hidden lg:flex items-center gap-1.5 bg-white px-2.5 py-1.5 rounded-xl border-2 border-slate-950 shadow-[2px_2px_0px_0px_rgba(15,23,42,1)]">
+        <nav className="hidden lg:flex items-center gap-1.5 bg-white px-2.5 py-1.5 rounded-xl border-2 border-slate-950 shadow-[2px_2px_0px_0px_rgba(15,23,42,1)] shrink-0">
           {navLinks.map((link) => {
             const Icon = link.icon;
             const active = isLinkActive(link.href);
@@ -105,18 +113,18 @@ export const Navbar: React.FC = () => {
         </nav>
 
         {/* 3. RIGHT CONTACT & ADMISSIONS */}
-        <div className="flex items-center gap-3 sm:gap-4">
+        <div className="flex items-center gap-3 sm:gap-4 shrink-0">
           {/* Quick Telephone */}
           <a
             href="tel:+94112401469"
-            className="hidden sm:flex items-center gap-2 text-xs font-black text-slate-950 hover:text-[#8B1538] transition-colors bg-white px-3 py-1.5 rounded-xl border-2 border-slate-950 shadow-[2px_2px_0px_0px_rgba(15,23,42,1)]"
+            className="hidden sm:flex items-center gap-2 text-xs font-black text-slate-950 hover:text-[#8B1538] transition-colors bg-white px-3 py-1.5 rounded-xl border-2 border-slate-950 shadow-[2px_2px_0px_0px_rgba(15,23,42,1)] whitespace-nowrap"
           >
             <Phone className="w-3.5 h-3.5 text-[#8B1538]" />
             <span>011 2401469</span>
           </a>
 
           {/* Admissions button redirects to #/contact page */}
-          <div className="shrink-0">
+          <div className="shrink -translate-x-[10px]">
             <SplitTextButton
               href="#/contact"
               text="Enroll Now"

@@ -10,6 +10,7 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
+import principaljpg from '../../assets/principal.jpg';
 import { SchoolEmblem } from '../ui/SchoolEmblem';
 import { SplitTextButton } from '../ui/SplitTextButton';
 import { Quote, Award, BookOpen, GraduationCap, HeartHandshake, ShieldCheck, Sparkles, Mail, Phone, ExternalLink, CheckCircle2 } from 'lucide-react';
@@ -73,8 +74,8 @@ export const PrincipalMessagePage: React.FC = () => {
               {/* Portrait Container */}
               <div className="relative w-full h-80 sm:h-96 rounded-2xl overflow-hidden border-4 border-slate-950 shadow-2xl bg-slate-100 flex items-center justify-center">
                 <img
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800"
-                  alt="Mrs. Buddhini Jayasundera, Principal"
+                  src={principaljpg}
+                  alt="Ms. Buddhini Jayasundera, Principal"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover object-top"
                 />
@@ -88,7 +89,7 @@ export const PrincipalMessagePage: React.FC = () => {
                     HEAD OF SCHOOL & PRINCIPAL
                   </span>
                   <h3 className="font-serif font-black text-xl text-white">
-                    Mrs. Buddhini Jayasundera
+                    Ms. Buddhini Jayasundera
                   </h3>
                   <p className="text-xs text-slate-200 font-medium">
                     B.A., M.Ed. (Leadership in Education)
@@ -156,7 +157,7 @@ export const PrincipalMessagePage: React.FC = () => {
 
               <div className="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
-                  <h4 className="font-serif font-black text-base text-slate-950">Mrs. Buddhini Jayasundera</h4>
+                  <h4 className="font-serif font-black text-base text-slate-950">Ms. Buddhini Jayasundera</h4>
                   <p className="text-xs text-slate-600">Principal, Yoshida Shokanji International School</p>
                 </div>
 

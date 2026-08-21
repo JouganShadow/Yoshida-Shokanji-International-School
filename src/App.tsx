@@ -230,9 +230,6 @@ export default function App() {
               transition={{ duration: 0.4 }}
               className="py-12 space-y-12"
             >
-              {/* 3D glass location map & distance indicators */}
-              <LocationMapSection />
-
               {/* Shotokan Karate Dojo & Olympic Pool highlight blocks */}
               <FacilitiesSection />
             </motion.div>
@@ -347,6 +344,9 @@ export default function App() {
                   Mon - Fri: 7:30 AM - 3:30 PM | Sat: 8:30 AM - 12:30 PM (Admissions Only)
                 </div>
               </div>
+
+              {/* 4. 3D Glass Location Map & Distance Indicators */}
+              <LocationMapSection />
             </motion.div>
           )}
         </AnimatePresence>

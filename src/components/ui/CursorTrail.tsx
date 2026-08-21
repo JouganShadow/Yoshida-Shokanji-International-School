@@ -2,8 +2,8 @@
  * ============================================================================
  * INTERACTIVE CURSOR TRAIL COMPONENT (ui/CursorTrail.tsx)
  * ============================================================================
- * Generates an isometric 3D voxel particle trail following cursor/touch
- * movement inside the hero section.
+ * Generates an isometric 3D voxel particle trail following cursor movement
+ * inside the hero section on desktop screens (disabled on mobile).
  * ============================================================================
  */
 
@@ -26,7 +26,10 @@ interface Voxel {
   maxLife: number;
 }
 
-export const CursorTrail: React.FC<{ containerRef: React.RefObject<HTMLDivElement | null> }> = ({ containerRef }) => {
+export const CursorTrail: React.FC<{ containerRef: React.RefObject<HTMLDivElement | null>; className?: string }> = ({
+  containerRef,
+  className = '',
+}) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -38,8 +41,17 @@ export const CursorTrail: React.FC<{ containerRef: React.RefObject<HTMLDivElemen
     let animId: number;
     const voxels: Voxel[] = [];
 
+    // Check if the current viewport is mobile
+    const isMobile = () => window.innerWidth < 768;
+
     // Resize canvas dynamically to match container element bounds
     const resizeCanvas = () => {
+      if (isMobile()) {
+        voxels.length = 0;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        return;
+      }
+
       const container = containerRef.current;
       if (container) {
         canvas.width = container.clientWidth;
@@ -63,8 +75,10 @@ export const CursorTrail: React.FC<{ containerRef: React.RefObject<HTMLDivElemen
       'maroon',
     ];
 
-    // Spawn new voxels on cursor move
+    // Spawn new voxels on cursor move (Desktop only)
     const addVoxels = (x: number, y: number) => {
+      if (isMobile()) return;
+
       const count = 2; // Number of voxels per move event
       for (let i = 0; i < count; i++) {
         const type = voxelTypes[Math.floor(Math.random() * voxelTypes.length)];
@@ -87,6 +101,8 @@ export const CursorTrail: React.FC<{ containerRef: React.RefObject<HTMLDivElemen
 
     // Track mouse move coordinates
     const handleMouseMove = (e: MouseEvent) => {
+      if (isMobile()) return;
+
       const container = containerRef.current;
       if (!container) return;
       const rect = container.getBoundingClientRect();
@@ -98,23 +114,7 @@ export const CursorTrail: React.FC<{ containerRef: React.RefObject<HTMLDivElemen
       }
     };
 
-    // Track touch move coordinates
-    const handleTouchMove = (e: TouchEvent) => {
-      if (e.touches.length > 0) {
-        const container = containerRef.current;
-        if (!container) return;
-        const rect = container.getBoundingClientRect();
-        const touch = e.touches[0];
-        const x = touch.clientX - rect.left;
-        const y = touch.clientY - rect.top;
-        if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
-          addVoxels(x, y);
-        }
-      }
-    };
-
     window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('touchmove', handleTouchMove);
 
     // Draw an isometric 3D Voxel block onto canvas context
     const drawVoxel = (
@@ -191,6 +191,12 @@ export const CursorTrail: React.FC<{ containerRef: React.RefObject<HTMLDivElemen
 
     // Render frame loop
     const render = () => {
+      if (isMobile()) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        animId = requestAnimationFrame(render);
+        return;
+      }
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.globalCompositeOperation = 'source-over';
 
@@ -219,7 +225,6 @@ export const CursorTrail: React.FC<{ containerRef: React.RefObject<HTMLDivElemen
     return () => {
       window.removeEventListener('resize', resizeCanvas);
       window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('touchmove', handleTouchMove);
       cancelAnimationFrame(animId);
     };
   }, [containerRef]);
@@ -227,7 +232,7 @@ export const CursorTrail: React.FC<{ containerRef: React.RefObject<HTMLDivElemen
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 pointer-events-none z-20"
+      className={`hidden md:block absolute inset-0 pointer-events-none z-20 ${className}`}
       style={{ opacity: 0.95 }}
     />
   );

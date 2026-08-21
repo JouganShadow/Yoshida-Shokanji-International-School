@@ -13,65 +13,50 @@
  */
 
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, Shield } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, Shield, Rocket } from 'lucide-react';
 import { SplitTextButton } from '../ui/SplitTextButton';
 
 export const ContactFooter: React.FC = () => {
-  // State for inquiry form submission response feedback
+  // Form submission success notification state
   const [formSubmitted, setFormSubmitted] = useState(false);
 
-  // Controlled form state with department routing
+  // Controlled form state with department, parentName, phoneNumber, and grade
   const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    grade: 'Nursery / Playgroup',
-    departmentEmail: 'info@yoshida.edu.lk',
-    message: '',
+    department: 'Admissions & General Office',
+    parentName: '',
+    phoneNumber: '',
+    grade: 'Nursery',
   });
 
-  // Handle form submission via server backend API to department email
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState('');
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.phone) return;
+    if (!formData.parentName || !formData.phoneNumber) return;
 
-    setIsSubmitting(true);
-    setSubmitError('');
+    // Format WhatsApp message with line breaks (%0A) and bold text (*Text*)
+    const message = `*New Admission Inquiry*%0A` +
+      `--------------------------------%0A` +
+      `*Department:* ${encodeURIComponent(formData.department)}%0A` +
+      `*Parent / Guardian Name:* ${encodeURIComponent(formData.parentName)}%0A` +
+      `*Phone Number:* ${encodeURIComponent(formData.phoneNumber)}%0A` +
+      `*Grade / Program:* ${encodeURIComponent(formData.grade)}%0A` +
+      `--------------------------------%0A` +
+      `Sent via Yoshida Shokanji Official Web Portal`;
 
-    try {
-      const response = await fetch('/api/submit-inquiry', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+    const whatsappNumber = '94771924546'; // Admissions Hotline WhatsApp
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+
+    window.open(whatsappUrl, '_blank');
+
+    setFormSubmitted(true);
+    setTimeout(() => {
+      setFormSubmitted(false);
+      setFormData({
+        department: 'Admissions & General Office',
+        parentName: '',
+        phoneNumber: '',
+        grade: 'Nursery',
       });
-
-      const data = await response.json();
-
-      if (data.success) {
-        setFormSubmitted(true);
-        setTimeout(() => {
-          setFormSubmitted(false);
-          setFormData({
-            name: '',
-            phone: '',
-            email: '',
-            grade: 'Nursery / Playgroup',
-            departmentEmail: 'info@yoshida.edu.lk',
-            message: '',
-          });
-        }, 6000);
-      } else {
-        setSubmitError(data.error || 'Failed to submit inquiry.');
-      }
-    } catch (err) {
-      console.error('Inquiry submission error:', err);
-      setSubmitError('Network error. Please try calling the school directly.');
-    } finally {
-      setIsSubmitting(false);
-    }
+    }, 4000);
   };
 
   return (
@@ -165,31 +150,26 @@ export const ContactFooter: React.FC = () => {
               {formSubmitted ? (
                 <div className="p-3 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600" />
-                  <span>Inquiry successfully transmitted to department inbox! We will contact you soon.</span>
+                  <span>WhatsApp opened with your pre-formatted admission inquiry! Our admissions office will respond shortly.</span>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-2">
-                  {submitError && (
-                    <div className="p-2 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-[11px] font-semibold">
-                      {submitError}
-                    </div>
-                  )}
                   <select
-                    value={formData.departmentEmail}
-                    onChange={(e) => setFormData({ ...formData, departmentEmail: e.target.value })}
+                    value={formData.department}
+                    onChange={(e) => setFormData({ ...formData, department: e.target.value })}
                     className="w-full px-2.5 py-1.5 rounded-xl bg-white border border-slate-300 text-xs text-slate-900 focus:outline-none focus:border-[#8B1538] shadow-sm font-semibold"
                   >
-                    <option value="info@yoshida.edu.lk">Admissions & General Office (info@yoshida.edu.lk)</option>
-                    <option value="principal@yoshida.edu.lk">Principal's Office (principal@yoshida.edu.lk)</option>
-                    <option value="yoshida1950@sltnet.lk">Accounts & Secretariat (yoshida1950@sltnet.lk)</option>
+                    <option value="Admissions & General Office">Admissions & General Office</option>
+                    <option value="Principal's Office">Principal's Office</option>
+                    <option value="Accounts & Secretariat">Accounts & Secretariat</option>
                   </select>
 
                   <input
                     type="text"
                     required
                     placeholder="Parent / Guardian Name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    value={formData.parentName}
+                    onChange={(e) => setFormData({ ...formData, parentName: e.target.value })}
                     className="w-full px-3 py-1.5 rounded-xl bg-white border border-slate-300 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#8B1538] shadow-sm font-medium"
                   />
                   <div className="flex gap-2">
@@ -197,8 +177,8 @@ export const ContactFooter: React.FC = () => {
                       type="tel"
                       required
                       placeholder="Phone Number"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      value={formData.phoneNumber}
+                      onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
                       className="w-1/2 px-3 py-1.5 rounded-xl bg-white border border-slate-300 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#8B1538] shadow-sm font-medium"
                     />
                     <select
@@ -206,18 +186,17 @@ export const ContactFooter: React.FC = () => {
                       onChange={(e) => setFormData({ ...formData, grade: e.target.value })}
                       className="w-1/2 px-2 py-1.5 rounded-xl bg-white border border-slate-300 text-xs text-slate-900 focus:outline-none focus:border-[#8B1538] shadow-sm font-medium"
                     >
-                      <option className="bg-white text-slate-900">Nursery</option>
-                      <option className="bg-white text-slate-900">Primary</option>
-                      <option className="bg-white text-slate-900">Cambridge IGCSE</option>
-                      <option className="bg-white text-slate-900">A-Levels</option>
+                      <option className="bg-white text-slate-900" value="Nursery">Nursery</option>
+                      <option className="bg-white text-slate-900" value="Primary">Primary</option>
+                      <option className="bg-white text-slate-900" value="Cambridge IGCSE">Cambridge IGCSE</option>
+                      <option className="bg-white text-slate-900" value="A-Levels">A-Levels</option>
                     </select>
                   </div>
                   <button
                     type="submit"
-                    disabled={isSubmitting}
-                    className="w-full py-2.5 px-4 rounded-xl bg-[#8B1538] text-white text-xs font-bold hover:bg-slate-950 transition-all shadow-[2px_2px_0px_0px_rgba(15,23,42,1)] disabled:opacity-50 flex items-center justify-center gap-2"
+                    className="w-full py-2.5 px-4 rounded-xl bg-[#8B1538] text-white text-xs font-bold hover:bg-slate-950 transition-all shadow-[2px_2px_0px_0px_rgba(15,23,42,1)] flex items-center justify-center gap-2"
                   >
-                    <span>{isSubmitting ? 'Transmitting Inquiry...' : 'Send Inquiry to Department'}</span>
+                    <span>Send Inquiry via WhatsApp</span>
                   </button>
                 </form>
               )}
@@ -228,18 +207,35 @@ export const ContactFooter: React.FC = () => {
         </div>
 
         {/* ------------------------------------------------------------------ */}
-        {/* BOTTOM COPYRIGHT & LOCATION STRIP                                  */}
+        {/* BOTTOM COPYRIGHT & LOCATION STRIP & CONTRIBUTOR BADGE              */}
         {/* ------------------------------------------------------------------ */}
-        <div className="pt-4 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-700 font-medium">
-          <div className="flex items-center gap-2">
-            <Shield className="w-4 h-4 text-[#8B1538]" />
-            <span>© 2026 Yoshida Shokanji International School. All Rights Reserved.</span>
+        <div className="pt-6 border-t border-slate-200/80 space-y-4">
+          {/* Prominent Contributor Callout Banner */}
+          <div className="p-3.5 rounded-xl bg-rose-50 border-2 border-[#8B1538]/30 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left shadow-sm">
+            <div className="flex items-center gap-2.5">
+              <div className="w-7 h-7 rounded-lg bg-[#8B1538] text-white flex items-center justify-center shrink-0">
+                <Rocket className="w-3.5 h-3.5" />
+              </div>
+              <span className="text-xs font-serif font-black text-slate-950">
+                Official Web Portal Initiative
+              </span>
+            </div>
+            <div className="text-xs font-bold text-[#8B1538] font-mono tracking-tight bg-white px-3 py-1 rounded-lg border border-rose-200 shadow-2xs">
+              🦖 A contribution by the 2026 Head Prefect and IT department
+            </div>
           </div>
 
-          <div className="flex items-center gap-4 text-[11px] font-semibold">
-            <a href="#hero" className="hover:text-[#8B1538] transition-colors">Back to Top ↑</a>
-            <span>•</span>
-            <span className="text-slate-600">Sapugaskanda • Sri Lanka</span>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-700 font-medium">
+            <div className="flex items-center gap-2">
+              <Shield className="w-4 h-4 text-[#8B1538]" />
+              <span>© 2026 Yoshida Shokanji International School. All Rights Reserved.</span>
+            </div>
+
+            <div className="flex items-center gap-4 text-[11px] font-semibold">
+              <a href="#hero" className="hover:text-[#8B1538] transition-colors">Back to Top ↑</a>
+              <span>•</span>
+              <span className="text-slate-600">Sapugaskanda • Sri Lanka</span>
+            </div>
           </div>
         </div>
 

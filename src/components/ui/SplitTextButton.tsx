@@ -20,7 +20,7 @@ import { ArrowUpRight } from 'lucide-react';
 interface SplitTextButtonProps {
   text: string;
   href?: string;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void;
   className?: string;
   theme?: 'maroon' | 'lime' | 'dark';
 }

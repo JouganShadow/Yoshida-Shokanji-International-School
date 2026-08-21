@@ -10,6 +10,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
+import principaljpg from '../../assets/principal.jpg';
 import { SchoolEmblem } from '../ui/SchoolEmblem';
 import { SplitTextButton } from '../ui/SplitTextButton';
 import { Quote, Award, BookOpen, GraduationCap, HeartHandshake, ShieldCheck, Sparkles, ChevronDown, ChevronUp, Mail, CheckCircle2 } from 'lucide-react';

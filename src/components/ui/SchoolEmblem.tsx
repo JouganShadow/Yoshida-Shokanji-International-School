@@ -17,19 +17,16 @@ interface SchoolEmblemProps {
 }
 
 export const SchoolEmblem: React.FC<SchoolEmblemProps> = ({
-  className = "w-10 h-10",
+  className = "",
   style,
 }) => {
   return (
     <img
       src={schoolLogoSvg}
       alt="Yoshida Shokanji International School Emblem"
-      className={`object-contain aspect-square shrink-0 ${className}`}
-      style={{
-        maxHeight: '100%',
-        maxWidth: '100%',
-        ...style,
-      }}
+      /* Fix: Explicit min-width/height prevents flex squishing, shrink-0 ensures strict sizing */
+      className={`shrink-0 min-w-10 min-h-10 w-12 h-12 object-contain aspect-square ${className}`}
+      style={{ ...style }}
       referrerPolicy="no-referrer"
     />
   );

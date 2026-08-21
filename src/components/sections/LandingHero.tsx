@@ -105,6 +105,16 @@ export const LandingHero: React.FC = () => {
               href="#stats"
               text="Explore Heritage & Stats"
               theme="maroon"
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.hash = '#/home';
+                setTimeout(() => {
+                  const statsEl = document.getElementById('stats');
+                  if (statsEl) {
+                    statsEl.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }, 100);
+              }}
             />
 
             <SplitTextButton
