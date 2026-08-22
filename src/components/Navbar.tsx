@@ -120,7 +120,7 @@ export const Navbar: React.FC = () => {
             className="hidden sm:flex items-center gap-2 text-xs font-black text-slate-950 hover:text-[#8B1538] transition-colors bg-white px-3 py-1.5 rounded-xl border-2 border-slate-950 shadow-[2px_2px_0px_0px_rgba(15,23,42,1)] whitespace-nowrap"
           >
             <Phone className="w-3.5 h-3.5 text-[#8B1538]" />
-            <span>011 2401469</span>
+            <span>011 2400632</span>
           </a>
 
           {/* Admissions button redirects to #/contact page */}

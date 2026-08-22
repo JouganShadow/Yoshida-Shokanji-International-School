@@ -31,7 +31,7 @@ export const SCHOOL_STATS: SchoolStat[] = [
   },
   {
     id: 'cambridge',
-    value: '2',
+    value: '3',
     label: 'World Cambridge Awards',
     subtitle: 'Top in the World Awards: 2 World Wins in French & Computer Science.',
     iconName: 'Trophy',
@@ -59,7 +59,7 @@ export const SCHOOL_STATS: SchoolStat[] = [
   },
   {
     id: 'clubs',
-    value: '30+',
+    value: '10+',
     label: 'Clubs & Sports Teams',
     subtitle: 'State-of-the-art Karate Dojo, Olympic swimming pool & robotics labs.',
     iconName: 'Activity',

@@ -19,7 +19,7 @@ import { StatCounterCard } from '../ui/StatCounterCard';
 import { SplitTextButton } from '../ui/SplitTextButton';
 import { Award, Trophy, Users, GraduationCap, UserCheck, Activity, Sparkles, CheckCircle2 } from 'lucide-react';
 
-export const StatsSection: React.FC = () => {
+export const StatsAndHeritageSection: React.FC = () => {
   /**
    * Helper function to return Lucide icon component based on string icon name
    */
@@ -57,7 +57,7 @@ export const StatsSection: React.FC = () => {
           </div>
 
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-black text-slate-950 tracking-tight leading-tight">
-            20+ Years of Shaping <span className="text-[#8B1538]">Global World Champions</span>
+            25+ Years of Shaping <span className="text-[#8B1538]">Global World Champions</span>
           </h2>
 
           <p className="text-slate-800 text-sm sm:text-base leading-relaxed font-sans font-medium">
@@ -84,7 +84,7 @@ export const StatsSection: React.FC = () => {
 
           {/* Card 2: 2 World Wins */}
           <StatCounterCard
-            numericValue={2}
+            numericValue={3}
             suffix=" World Wins"
             label="Cambridge Learner Awards"
             description="Proving world-class academic supremacy by producing student candidates ranked Top in the World — featuring 2 World Wins in French and Computer Science."

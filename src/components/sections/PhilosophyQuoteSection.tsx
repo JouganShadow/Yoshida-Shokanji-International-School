@@ -57,7 +57,7 @@ const MaroonBlockReveal: React.FC<{
   );
 };
 
-export const QuoteSection: React.FC = () => {
+export const PhilosophyQuoteSection: React.FC = () => {
   return (
     <section id="mission" className="relative py-20 bg-transparent text-slate-900 overflow-hidden">
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 z-10">

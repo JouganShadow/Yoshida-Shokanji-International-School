@@ -59,7 +59,7 @@ const CardBlockReveal: React.FC<{
   );
 };
 
-export const ManagementSection: React.FC = () => {
+export const ManagementAndAdvisorySection: React.FC = () => {
   return (
     <section id="management" className="relative py-24 bg-transparent text-slate-900 overflow-hidden">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">

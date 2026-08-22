@@ -20,17 +20,17 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Navbar } from './components/Navbar';
-import { LandingHero } from './components/sections/LandingHero';
-import { StatsSection } from './components/sections/StatsSection';
-import { QuoteSection } from './components/sections/QuoteSection';
-import { PrincipalSection } from './components/sections/PrincipalSection';
-import { PrincipalMessagePage } from './components/sections/PrincipalMessagePage';
-import { LocationMapSection } from './components/sections/LocationMapSection';
-import { AchievementsSection } from './components/sections/AchievementsSection';
-import { ManagementSection } from './components/sections/ManagementSection';
-import { AcademicsSection } from './components/sections/AcademicsSection';
-import { FacilitiesSection } from './components/sections/FacilitiesSection';
-import { ContactFooter } from './components/sections/ContactFooter';
+import { LandingHeroSection } from './components/sections/LandingHeroSection';
+import { StatsAndHeritageSection } from './components/sections/StatsAndHeritageSection';
+import { PhilosophyQuoteSection } from './components/sections/PhilosophyQuoteSection';
+import { PrincipalWelcomeSection } from './components/sections/PrincipalWelcomeSection';
+import { PrincipalFullMessageSection } from './components/sections/PrincipalFullMessageSection';
+import { LocationAndMapSection } from './components/sections/LocationAndMapSection';
+import { AchievementsAndAwardsSection } from './components/sections/AchievementsAndAwardsSection';
+import { ManagementAndAdvisorySection } from './components/sections/ManagementAndAdvisorySection';
+import { CurriculumPathwaysSection } from './components/sections/CurriculumPathwaysSection';
+import { CampusFacilitiesSection } from './components/sections/CampusFacilitiesSection';
+import { AdmissionsAndContactSection } from './components/sections/AdmissionsAndContactSection';
 import { SplitTextButton } from './components/ui/SplitTextButton';
 
 import { Sparkles, ChevronRight, GraduationCap, Building, PhoneCall, Compass, Trophy, Users, Mail, Clock, MapPin } from 'lucide-react';
@@ -94,13 +94,13 @@ export default function App() {
               className="space-y-0"
             >
               {/* Landing Hero Screen with 3D shader wheel */}
-              <LandingHero />
+              <LandingHeroSection />
 
               {/* Quick High-Impact Key Metrics */}
-              <StatsSection />
+              <StatsAndHeritageSection />
 
               {/* Nurturing Japanese Ethics and English Medium Quote Section */}
-              <QuoteSection />
+              <PhilosophyQuoteSection />
 
               {/* CURATED HIGHLIGHTS PORTAL (Skillshare-style 2-Column Promo) */}
               <section className="py-20 bg-white border-t-2 border-b-2 border-slate-950">
@@ -183,7 +183,7 @@ export default function App() {
               exit={{ opacity: 0, y: -15 }}
               transition={{ duration: 0.4 }}
             >
-              <PrincipalMessagePage />
+              <PrincipalFullMessageSection />
             </motion.div>
           )}
 
@@ -197,10 +197,10 @@ export default function App() {
               className="space-y-0"
             >
               {/* Big Featured section for Principal's Desk, experience tag & speech */}
-              <PrincipalSection />
+              <PrincipalWelcomeSection />
 
               {/* Management Team Profiles, Advisory Board & Bulletins */}
-              <ManagementSection />
+              <ManagementAndAdvisorySection />
             </motion.div>
           )}
 
@@ -214,10 +214,10 @@ export default function App() {
               className="py-12 space-y-12"
             >
               {/* Premium Skillshare style course listing */}
-              <AcademicsSection />
+              <CurriculumPathwaysSection />
 
               {/* Achievements: Karate, Swimming, Academic honors */}
-              <AchievementsSection />
+              <AchievementsAndAwardsSection />
             </motion.div>
           )}
 
@@ -231,7 +231,7 @@ export default function App() {
               className="py-12 space-y-12"
             >
               {/* Shotokan Karate Dojo & Olympic Pool highlight blocks */}
-              <FacilitiesSection />
+              <CampusFacilitiesSection />
             </motion.div>
           )}
 
@@ -346,7 +346,7 @@ export default function App() {
               </div>
 
               {/* 4. 3D Glass Location Map & Distance Indicators */}
-              <LocationMapSection />
+              <LocationAndMapSection />
             </motion.div>
           )}
         </AnimatePresence>
@@ -355,7 +355,7 @@ export default function App() {
       {/* ------------------------------------------------------------------ */}
       {/* FOOTER: Contact forms and campus directories on every view        */}
       {/* ------------------------------------------------------------------ */}
-      <ContactFooter />
+      <AdmissionsAndContactSection />
     </div>
   );
 }

@@ -16,7 +16,7 @@ import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, Shield, Rocket } from 'lucide-react';
 import { SplitTextButton } from '../ui/SplitTextButton';
 
-export const ContactFooter: React.FC = () => {
+export const AdmissionsAndContactSection: React.FC = () => {
   // Form submission success notification state
   const [formSubmitted, setFormSubmitted] = useState(false);
 
@@ -42,7 +42,7 @@ export const ContactFooter: React.FC = () => {
       `--------------------------------%0A` +
       `Sent via Yoshida Shokanji Official Web Portal`;
 
-    const whatsappNumber = '94771924546'; // Admissions Hotline WhatsApp
+    const whatsappNumber = '94764609804'; // Admissions Hotline WhatsApp
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
 
     window.open(whatsappUrl, '_blank');
@@ -105,7 +105,7 @@ export const ContactFooter: React.FC = () => {
                 </a>
                 <a href="https://wa.me/94771924546" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-[#8B1538] transition-colors">
                   <Phone className="w-3.5 h-3.5 text-[#8B1538] shrink-0" />
-                  <span>077 1924546 (Call / WhatsApp)</span>
+                  <span>071 3195191 (Call / WhatsApp)</span>
                 </a>
                 <a href="https://wa.me/94764609804" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-[#8B1538] transition-colors">
                   <Phone className="w-3.5 h-3.5 text-[#8B1538] shrink-0" />
@@ -126,10 +126,6 @@ export const ContactFooter: React.FC = () => {
                 <a href="mailto:info@yoshida.edu.lk" className="flex items-center gap-2 hover:text-[#8B1538] transition-colors font-mono font-semibold">
                   <Mail className="w-3.5 h-3.5 text-[#8B1538] shrink-0" />
                   <span>info@yoshida.edu.lk</span>
-                </a>
-                <a href="mailto:yoshida1950@sltnet.lk" className="flex items-center gap-2 hover:text-[#8B1538] transition-colors font-mono font-semibold">
-                  <Mail className="w-3.5 h-3.5 text-[#8B1538] shrink-0" />
-                  <span>yoshida1950@sltnet.lk</span>
                 </a>
                 <div className="pt-1 flex items-center gap-1.5 text-xs text-slate-700 font-medium">
                   <Clock className="w-3.5 h-3.5 text-[#8B1538] shrink-0" />

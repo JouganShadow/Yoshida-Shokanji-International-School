@@ -57,7 +57,7 @@ const CardBlockReveal: React.FC<{
   );
 };
 
-export const PrincipalSection: React.FC = () => {
+export const PrincipalWelcomeSection: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const pillars = [

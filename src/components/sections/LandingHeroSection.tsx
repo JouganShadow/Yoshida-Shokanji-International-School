@@ -22,7 +22,7 @@ import { SchoolLogoWheel } from '../ui/SchoolLogoWheel';
 import { SplitTextButton } from '../ui/SplitTextButton';
 import { ArrowDown, ShieldCheck } from 'lucide-react';
 
-export const LandingHero: React.FC = () => {
+export const LandingHeroSection: React.FC = () => {
   // Reference attached to hero section container
   const heroRef = useRef<HTMLDivElement | null>(null);
 
@@ -118,9 +118,19 @@ export const LandingHero: React.FC = () => {
             />
 
             <SplitTextButton
-              href="#location"
+              href="#/contact"
               text="View Interactive Map"
               theme="dark"
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.hash = '#/contact';
+                setTimeout(() => {
+                  const locationEl = document.getElementById('location');
+                  if (locationEl) {
+                    locationEl.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }, 100);
+              }}
             />
           </div>
         </motion.div>

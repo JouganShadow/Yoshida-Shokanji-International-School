@@ -23,7 +23,7 @@ interface FacilityItem {
   features: string[];
 }
 
-export const FacilitiesSection: React.FC = () => {
+export const CampusFacilitiesSection: React.FC = () => {
   const facilities: FacilityItem[] = [
     {
       id: 'karate',
@@ -37,12 +37,12 @@ export const FacilitiesSection: React.FC = () => {
     },
     {
       id: 'swimming',
-      name: 'Olympic-Standard 6-Lane Swimming Pool',
+      name: '6-Lane Swimming Pool',
       type: 'Aquatic Center',
       imageUrl: 'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&q=80&w=600',
       capacity: '6 Lanes, Full Squad',
       coaches: 'Certified Lifeguards & Coaches',
-      description: 'A custom, clean blue 6-lane athletic pool where our champion swimming squads train for national meets, water-polo events, and life-saving certifications.',
+      description: 'A custom, clean blue 6-lane athletic pool where our champion swimming squads train for national meets, and life-saving certifications.',
       features: ['Anti-turbulence lane lines', 'Continuous sanitization plant', 'Custom starting blocks'],
     },
     {
@@ -74,16 +74,6 @@ export const FacilitiesSection: React.FC = () => {
       coaches: 'Supervised Student Safety',
       description: 'Safe, landscaped outdoor play grounds and recreational play structures designed for early childhood physical agility and social play at Takiko Yoshida Mawatha.',
       features: ['Child-safe cushioned turf', 'Modular climbing apparatus', 'Shaded seating areas'],
-    },
-    {
-      id: 'auditorium',
-      name: 'Auditorium & Vocational Training Center',
-      type: 'Assembly & Skills',
-      imageUrl: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80&w=600',
-      capacity: '300+ Attendees',
-      coaches: 'Event & Technical Crew',
-      description: 'Multipurpose venue for school assemblies, speech & drama, cultural programs, IT skill workshops, and teacher training seminars.',
-      features: ['Acoustic sound system', 'Stage lighting rigs', 'HD projection facilities'],
     },
   ];
 

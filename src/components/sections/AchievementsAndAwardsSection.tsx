@@ -17,7 +17,7 @@ import { ACHIEVEMENTS } from '../../data/schoolData';
 import { AchievementItem } from '../../types';
 import { Trophy, Award, Filter, X, ChevronRight } from 'lucide-react';
 
-export const AchievementsSection: React.FC = () => {
+export const AchievementsAndAwardsSection: React.FC = () => {
   // State for active category filter ('All', 'Sports', 'Academic', 'Cultural', 'Leadership')
   const [activeCategory, setActiveCategory] = useState<string>('All');
 

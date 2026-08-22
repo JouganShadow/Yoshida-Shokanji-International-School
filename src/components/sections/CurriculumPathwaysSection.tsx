@@ -29,7 +29,7 @@ interface AcademicCourse {
   highlights: string[];
 }
 
-export const AcademicsSection: React.FC = () => {
+export const CurriculumPathwaysSection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>('All');
 
   const categories = ['All', 'Primary', 'Secondary', 'Advanced', 'Language'];

@@ -15,7 +15,7 @@ import { SchoolEmblem } from '../ui/SchoolEmblem';
 import { SplitTextButton } from '../ui/SplitTextButton';
 import { Quote, Award, BookOpen, GraduationCap, HeartHandshake, ShieldCheck, Sparkles, Mail, Phone, ExternalLink, CheckCircle2 } from 'lucide-react';
 
-export const PrincipalMessagePage: React.FC = () => {
+export const PrincipalFullMessageSection: React.FC = () => {
   const pillars = [
     {
       icon: BookOpen,

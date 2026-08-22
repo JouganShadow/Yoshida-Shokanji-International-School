@@ -17,7 +17,7 @@ import { motion } from 'motion/react';
 import { RESIDENTIAL_AREAS } from '../../data/schoolData';
 import { MapPin, Clock, Car, ExternalLink } from 'lucide-react';
 
-export const LocationMapSection: React.FC = () => {
+export const LocationAndMapSection: React.FC = () => {
   /**
    * Exact Google Maps embed URL targeting Yoshida Shokanji International School campus
    * Coordinates: 6.96876281276733, 79.95855983462086
