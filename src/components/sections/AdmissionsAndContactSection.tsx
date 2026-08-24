@@ -217,7 +217,7 @@ export const AdmissionsAndContactSection: React.FC = () => {
               </span>
             </div>
             <div className="text-xs font-bold text-[#8B1538] font-mono tracking-tight bg-white px-3 py-1 rounded-lg border border-rose-200 shadow-2xs">
-              🦖 A contribution by the 2026 Head Prefect and IT department
+              🦖 A contribution by the 2026 Head Prefect
             </div>
           </div>
 

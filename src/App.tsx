@@ -32,6 +32,8 @@ import { CurriculumPathwaysSection } from './components/sections/CurriculumPathw
 import { CampusFacilitiesSection } from './components/sections/CampusFacilitiesSection';
 import { AdmissionsAndContactSection } from './components/sections/AdmissionsAndContactSection';
 import { SplitTextButton } from './components/ui/SplitTextButton';
+import { IOSPointer } from './components/ui/IOSPointer';
+import { BlindsCurtainTransition } from './components/ui/BlindsCurtainTransition';
 
 import { Sparkles, ChevronRight, GraduationCap, Building, PhoneCall, Compass, Trophy, Users, Mail, Clock, MapPin } from 'lucide-react';
 
@@ -69,6 +71,12 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen text-slate-800 bg-[#FAF9F6] font-sans selection:bg-[#8B1538] selection:text-white overflow-x-hidden">
+      {/* Custom iOS/iPadOS style elastic pointer (disabled inside Landing Hero) */}
+      <IOSPointer />
+
+      {/* Curtains: Blinds page transition on route change */}
+      <BlindsCurtainTransition currentRoute={currentRoute} />
+
       {/* ------------------------------------------------------------------ */}
       {/* BACKGROUND: Clean editorial background with subtle accents        */}
       {/* ------------------------------------------------------------------ */}
