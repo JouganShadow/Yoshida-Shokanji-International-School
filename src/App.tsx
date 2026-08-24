@@ -21,6 +21,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Navbar } from './components/Navbar';
 import { LandingHeroSection } from './components/sections/LandingHeroSection';
+import { ScrollTextLinesSection } from './components/sections/ScrollTextLinesSection';
 import { StatsAndHeritageSection } from './components/sections/StatsAndHeritageSection';
 import { PhilosophyQuoteSection } from './components/sections/PhilosophyQuoteSection';
 import { PrincipalWelcomeSection } from './components/sections/PrincipalWelcomeSection';
@@ -103,6 +104,9 @@ export default function App() {
             >
               {/* Landing Hero Screen with 3D shader wheel */}
               <LandingHeroSection />
+
+              {/* Parallax Scroll Text Lines (YOSHIDA • SHOKANJI • INTERNATIONAL) */}
+              <ScrollTextLinesSection />
 
               {/* Quick High-Impact Key Metrics */}
               <StatsAndHeritageSection />
