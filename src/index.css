@@ -1,5 +1,20 @@
 @import "tailwindcss";
 
+@layer base {
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+  }
+}
+
 @theme {
   --font-serif: 'Cinzel', Georgia, serif;
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
@@ -20,6 +35,12 @@
   }
   100% {
     background-position: 0% 0%, 100% 0%, 50% 100%, 0% 50%;
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
   }
 }
 
@@ -48,5 +69,117 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
+  background: #8b1538;
+}
+
+/* ============================================================================
+   DARK MODE OVERRIDES
+   These rules override hardcoded light-mode Tailwind classes when the .dark
+   class is present on the html element, ensuring the components remain
+   untouched while providing a clean dark theme.
+   ============================================================================ */
+
+/* Backgrounds */
+html.dark .animate-moving-gradient {
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(139, 21, 56, 0.25) 0%, rgba(23, 23, 23, 0) 55%),
+    radial-gradient(circle at 75% 75%, #171717 0%, rgba(38, 38, 38, 0.6) 45%, rgba(23, 23, 23, 0) 70%),
+    radial-gradient(circle at 50% 30%, rgba(139, 21, 56, 0.15) 0%, rgba(38, 38, 38, 0) 60%),
+    linear-gradient(135deg, #171717 0%, #262626 25%, #171717 50%, #0a0a0a 75%, #171717 100%) !important;
+}
+
+html.dark body,
+html.dark .bg-\[\#FAF9F6\] {
+  background-color: #171717 !important; /* neutral-900 */
+}
+
+html.dark .bg-white {
+  background-color: #262626 !important; /* neutral-800 */
+}
+
+html.dark [class*="bg-white/"] {
+  background-color: rgba(38, 38, 38, 0.85) !important;
+}
+
+html.dark .bg-slate-50,
+html.dark .bg-slate-100,
+html.dark [class*="bg-slate-50/"],
+html.dark [class*="bg-slate-100/"] {
+  background-color: #171717 !important;
+}
+
+html.dark .bg-slate-200,
+html.dark [class*="bg-slate-200"] {
+  background-color: #262626 !important;
+}
+
+html.dark .bg-slate-900,
+html.dark .bg-slate-950,
+html.dark [class*="bg-slate-900/"],
+html.dark [class*="bg-slate-950/"] {
+  background-color: #404040 !important; /* neutral-700 */
+}
+
+html.dark .bg-rose-50,
+html.dark [class*="bg-rose-50/"],
+html.dark [class*="bg-rose-100"],
+html.dark [class*="bg-rose-200"] {
+  background-color: rgba(38, 38, 38, 0.8) !important;
+}
+
+html.dark .group:hover .group-hover\:bg-slate-50 {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Text Colors */
+html.dark .text-slate-950,
+html.dark .text-slate-900,
+html.dark .text-slate-800 {
+  color: #f8fafc !important; /* slate-50 */
+}
+
+html.dark .text-slate-700,
+html.dark .text-slate-600 {
+  color: #e2e8f0 !important; /* slate-200 */
+}
+
+html.dark .text-slate-500 {
+  color: #94a3b8 !important; /* slate-400 */
+}
+
+/* Borders */
+html.dark .border-slate-950,
+html.dark .border-slate-900 {
+  border-color: #0a0a0a !important; /* Darker than background for contrast */
+}
+
+html.dark .border-slate-200,
+html.dark .border-slate-100 {
+  border-color: #404040 !important;
+}
+
+html.dark .border-rose-100,
+html.dark .border-rose-200 {
+  border-color: rgba(139, 21, 56, 0.3) !important;
+}
+
+/* Shadows - Map slate-950 shadows to pure black so they are visible on dark bg */
+html.dark .shadow-\[1px_1px_0px_0px_rgba\(15\,23\,42\,1\)\] { box-shadow: 1px 1px 0px 0px #0a0a0a !important; }
+html.dark .shadow-\[2px_2px_0px_0px_rgba\(15\,23\,42\,1\)\] { box-shadow: 2px 2px 0px 0px #0a0a0a !important; }
+html.dark .shadow-\[3px_3px_0px_0px_rgba\(15\,23\,42\,1\)\] { box-shadow: 3px 3px 0px 0px #0a0a0a !important; }
+html.dark .shadow-\[4px_4px_0px_0px_rgba\(15\,23\,42\,1\)\] { box-shadow: 4px 4px 0px 0px #0a0a0a !important; }
+html.dark .shadow-\[5px_5px_0px_0px_rgba\(15\,23\,42\,1\)\] { box-shadow: 5px 5px 0px 0px #0a0a0a !important; }
+html.dark .shadow-\[6px_6px_0px_0px_rgba\(15\,23\,42\,1\)\] { box-shadow: 6px 6px 0px 0px #0a0a0a !important; }
+html.dark .shadow-\[8px_8px_0px_0px_rgba\(15\,23\,42\,1\)\] { box-shadow: 8px 8px 0px 0px #0a0a0a !important; }
+html.dark .hover\:shadow-\[8px_8px_0px_0px_rgba\(15\,23\,42\,1\)\]:hover { box-shadow: 8px 8px 0px 0px #0a0a0a !important; }
+
+/* Invert scrollbar */
+html.dark ::-webkit-scrollbar-track {
+  background: #171717;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #404040;
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
   background: #8b1538;
 }

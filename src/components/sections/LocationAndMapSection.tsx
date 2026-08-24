@@ -12,12 +12,14 @@
  * ============================================================================
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { RESIDENTIAL_AREAS } from '../../data/schoolData';
-import { MapPin, Clock, Car, ExternalLink } from 'lucide-react';
+import { MapPin, Clock, Car, ExternalLink, Navigation } from 'lucide-react';
+import { Skeleton } from '../ui/Skeleton';
 
 export const LocationAndMapSection: React.FC = () => {
+  const [mapLoaded, setMapLoaded] = useState(false);
   /**
    * Exact Google Maps embed URL targeting Yoshida Shokanji International School campus
    * Coordinates: 6.96876281276733, 79.95855983462086
@@ -70,18 +72,34 @@ export const LocationAndMapSection: React.FC = () => {
               {/* Embedded Interactive Map Card */}
               <div className="relative w-full h-[400px] sm:h-[480px] rounded-2xl overflow-hidden border border-slate-200 shadow-inner bg-slate-100">
                 
+                {/* Map Skeleton Placeholder */}
+                {!mapLoaded && (
+                  <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-slate-100 dark:bg-neutral-800 p-6 space-y-4">
+                    <Skeleton className="w-full h-full absolute inset-0 rounded-none" />
+                    <div className="relative z-20 flex flex-col items-center gap-3">
+                      <div className="w-14 h-14 rounded-full bg-[#8B1538]/10 dark:bg-rose-900/30 flex items-center justify-center text-[#8B1538] animate-bounce">
+                        <Navigation className="w-7 h-7" />
+                      </div>
+                      <span className="text-xs font-mono font-bold text-slate-700 dark:text-slate-200 uppercase tracking-widest">
+                        Loading Campus Map Data...
+                      </span>
+                    </div>
+                  </div>
+                )}
+
                 {/* Embedded Live Google Map View */}
                 <iframe
                   title="Yoshida International School Map"
                   src={YOSHIDA_MAP_EMBED_URL}
-                  className="w-full h-full grayscale-[10%] contrast-[105%] opacity-90 hover:opacity-100 transition-opacity pointer-events-none"
+                  onLoad={() => setMapLoaded(true)}
+                  className={`w-full h-full grayscale-[10%] contrast-[105%] transition-opacity duration-700 pointer-events-none ${mapLoaded ? 'opacity-90 hover:opacity-100' : 'opacity-0'}`}
                   style={{ border: 0 }}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
 
                 {/* Translucent Glass Map Controls Overlay */}
-                <div className="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">
+                <div className="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none z-20">
                   <div className="px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-slate-200 text-xs font-mono font-semibold text-slate-800 flex items-center gap-2 shadow-md">
                     <span className="w-2 h-2 rounded-full bg-emerald-500" />
                     <span>GPS: 6.96876° N, 79.95856° E</span>
@@ -92,7 +110,7 @@ export const LocationAndMapSection: React.FC = () => {
                 </div>
 
                 {/* Glassy Table Base Platform Reflection */}
-                <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-white via-white/90 to-transparent flex items-center justify-between text-xs">
+                <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-white via-white/90 to-transparent flex items-center justify-between text-xs z-20">
                   <span className="text-slate-900 font-semibold flex items-center gap-1.5">
                     <MapPin className="w-3.5 h-3.5 text-[#8B1538] shrink-0" />
                     <span>Sapugaskanda Road, Makola / Kelaniya, Sri Lanka</span>

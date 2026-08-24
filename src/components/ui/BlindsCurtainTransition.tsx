@@ -2,13 +2,12 @@
  * ============================================================================
  * CURTAINS: BLINDS PAGE TRANSITION (ui/BlindsCurtainTransition.tsx)
  * ============================================================================
- * Implements a pure maroon Venetian Blinds page transition triggered whenever
- * the user navigates between routes.
+ * Implements a pure #750E2A maroon Venetian Blinds page transition triggered
+ * whenever the user navigates between routes.
  * 
  * FEATURES:
- * - 9 horizontal maroon blinds/slats that sweep across the viewport in staggered sequence.
- * - Alternating rich maroon tones (#8B1538 & #750E2A) with crisp divider borders.
- * - Hardware-accelerated transforms with non-blocking pointer events.
+ * - 9 horizontal slats in solid #750E2A that sweep across the viewport in staggered sequence.
+ * - Hardware-accelerated transforms with non-blocking pointer events and no borders.
  * ============================================================================
  */
 
@@ -20,6 +19,7 @@ interface BlindsCurtainTransitionProps {
 }
 
 const TOTAL_SLATS = 9;
+const SLAT_COLOR = '#750E2A';
 
 export const BlindsCurtainTransition: React.FC<BlindsCurtainTransitionProps> = ({ currentRoute }) => {
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -51,35 +51,23 @@ export const BlindsCurtainTransition: React.FC<BlindsCurtainTransitionProps> = (
     >
       {/* Horizontal Venetian Blinds Slats */}
       <div className="relative flex-1 w-full flex flex-col">
-        {Array.from({ length: TOTAL_SLATS }).map((_, index) => {
-          // Alternating maroon tones
-          const isEven = index % 2 === 0;
-          const bgColor = isEven ? '#8B1538' : '#750E2A';
-
-          return (
-            <motion.div
-              key={`slat-${index}`}
-              className="relative w-full flex-1 border-b-2 border-slate-950 origin-top overflow-hidden"
-              style={{
-                backgroundColor: bgColor,
-              }}
-              initial={{ scaleY: 0 }}
-              animate={{
-                scaleY: [0, 1, 1, 0],
-                originY: [0, 0, 1, 1], // Expands from top down, then exits from bottom up
-              }}
-              transition={{
-                duration: 0.75,
-                times: [0, 0.4, 0.6, 1],
-                delay: index * 0.032, // Stagger effect from top to bottom
-                ease: [0.22, 1, 0.36, 1],
-              }}
-            >
-              {/* Subtle light highlight line along top edge of each slat */}
-              <div className="absolute top-0 left-0 right-0 h-[1px] bg-white/20" />
-            </motion.div>
-          );
-        })}
+        {Array.from({ length: TOTAL_SLATS }).map((_, index) => (
+          <motion.div
+            key={`slat-${index}`}
+            className="relative w-full flex-1 origin-top overflow-hidden bg-[#750E2A]"
+            initial={{ scaleY: 0 }}
+            animate={{
+              scaleY: [0, 1, 1, 0],
+              originY: [0, 0, 1, 1], // Expands from top down, then exits from bottom up
+            }}
+            transition={{
+              duration: 0.75,
+              times: [0, 0.4, 0.6, 1],
+              delay: index * 0.032, // Stagger effect from top to bottom
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          />
+        ))}
       </div>
     </div>
   );

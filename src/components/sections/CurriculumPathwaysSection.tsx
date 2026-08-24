@@ -9,9 +9,10 @@
  */
 
 import React, { useState } from 'react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { BookOpen, Users, Clock, Languages, Award, Shield, CheckCircle2, ChevronRight, GraduationCap } from 'lucide-react';
 import { SplitTextButton } from '../ui/SplitTextButton';
+import { ImageWithSkeleton, CourseCardSkeleton } from '../ui/Skeleton';
 import feesImageUrl from '../../assets/images/Fees.jpg';
 
 interface AcademicCourse {
@@ -161,18 +162,18 @@ export const CurriculumPathwaysSection: React.FC = () => {
             >
               {/* Cover Image & Category Tag Overlay */}
               <div className="relative h-48 sm:h-52 w-full overflow-hidden border-b-2 border-slate-950 bg-slate-100">
-                <img
+                <ImageWithSkeleton
                   src={course.coverImage}
                   alt={course.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  imgClassName="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 {/* Custom Overlay Tag */}
-                <div className="absolute top-4 left-4 bg-slate-950 text-white px-2.5 py-1 text-[10px] font-mono font-extrabold uppercase tracking-wider rounded border border-slate-800">
+                <div className="absolute top-4 left-4 bg-slate-950 text-white px-2.5 py-1 text-[10px] font-mono font-extrabold uppercase tracking-wider rounded border border-slate-800 z-20">
                   {course.category}
                 </div>
 
                 {/* Rating Badge Overlay */}
-                <div className="absolute bottom-4 left-4 bg-[#8B1538] text-white px-2 py-0.5 text-[9px] font-sans font-bold uppercase tracking-wide rounded">
+                <div className="absolute bottom-4 left-4 bg-[#8B1538] text-white px-2 py-0.5 text-[9px] font-sans font-bold uppercase tracking-wide rounded z-20">
                   {course.ratingBadge}
                 </div>
               </div>

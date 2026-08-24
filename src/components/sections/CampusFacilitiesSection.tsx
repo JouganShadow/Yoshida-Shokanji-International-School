@@ -11,6 +11,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Trophy, Shield, HelpCircle, MapPin, Check, Sparkles } from 'lucide-react';
+import { ImageWithSkeleton, FacilityCardSkeleton } from '../ui/Skeleton';
 
 interface FacilityItem {
   id: string;
@@ -109,14 +110,14 @@ export const CampusFacilitiesSection: React.FC = () => {
             >
               {/* Image Left Side on tablet/desktop */}
               <div className="relative w-full sm:w-2/5 h-48 sm:h-auto overflow-hidden bg-slate-100 shrink-0 border-b-2 sm:border-b-0 sm:border-r-2 border-slate-950">
-                <img
+                <ImageWithSkeleton
                   src={fac.imageUrl}
                   alt={fac.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  imgClassName="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 
                 {/* Type Badge Overlay */}
-                <div className="absolute top-3 left-3 bg-slate-950 text-white px-2 py-0.5 text-[9px] font-mono font-extrabold uppercase rounded">
+                <div className="absolute top-3 left-3 bg-slate-950 text-white px-2 py-0.5 text-[9px] font-mono font-extrabold uppercase rounded z-20">
                   {fac.type}
                 </div>
               </div>

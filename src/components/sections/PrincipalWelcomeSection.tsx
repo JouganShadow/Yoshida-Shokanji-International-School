@@ -14,6 +14,7 @@ import principaljpg from '../../assets/principal.jpg';
 import { SchoolEmblem } from '../ui/SchoolEmblem';
 import { SplitTextButton } from '../ui/SplitTextButton';
 import { Quote, Award, BookOpen, GraduationCap, HeartHandshake, ShieldCheck, Sparkles, ChevronDown, ChevronUp, Mail, CheckCircle2 } from 'lucide-react';
+import { ImageWithSkeleton } from '../ui/Skeleton';
 
 /**
  * CardBlockReveal - A swipe curtain reveal for full component blocks.
@@ -122,18 +123,17 @@ export const PrincipalWelcomeSection: React.FC = () => {
 
                 {/* Main Portrait Frame */}
                 <div className="relative w-64 h-80 sm:w-72 sm:h-96 rounded-2xl overflow-hidden border-4 border-white shadow-2xl bg-slate-100">
-                  <img
+                  <ImageWithSkeleton
                     src="https://yoshida.edu.lk/assets/img/team/5.png"
                     alt="Most Ven. Banagala Upatissa Nayaka Thero, Chairman & Founder"
-                    referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    imgClassName="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   />
                   
                   {/* Subtle Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none z-10" />
 
                   {/* Name Badge Overlay */}
-                  <div className="absolute bottom-4 left-4 right-4 text-left text-white space-y-0.5">
+                  <div className="absolute bottom-4 left-4 right-4 text-left text-white space-y-0.5 z-20">
                     <span className="text-[10px] font-mono font-bold text-rose-300 uppercase tracking-widest block">
                       CHAIRMAN & FOUNDER
                     </span>

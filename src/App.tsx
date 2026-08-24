@@ -35,32 +35,45 @@ import { AdmissionsAndContactSection } from './components/sections/AdmissionsAnd
 import { SplitTextButton } from './components/ui/SplitTextButton';
 import { IOSPointer } from './components/ui/IOSPointer';
 import { BlindsCurtainTransition } from './components/ui/BlindsCurtainTransition';
+import { PageSkeleton } from './components/ui/Skeleton';
 
 import { Sparkles, ChevronRight, GraduationCap, Building, PhoneCall, Compass, Trophy, Users, Mail, Clock, MapPin } from 'lucide-react';
 
 export default function App() {
   const [currentRoute, setCurrentRoute] = useState<'home' | 'about' | 'principal' | 'academics' | 'campus' | 'contact'>('home');
+  const [isLoading, setIsLoading] = useState(false);
 
   // Sync route state with window.location.hash
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash;
+      let nextRoute: 'home' | 'about' | 'principal' | 'academics' | 'campus' | 'contact' = 'home';
       if (hash.startsWith('#/principal')) {
-        setCurrentRoute('principal');
+        nextRoute = 'principal';
       } else if (hash.startsWith('#/about') || hash.startsWith('#/management')) {
-        setCurrentRoute('about');
+        nextRoute = 'about';
       } else if (hash.startsWith('#/academics') || hash.startsWith('#/achievements')) {
-        setCurrentRoute('academics');
+        nextRoute = 'academics';
       } else if (hash.startsWith('#/campus') || hash.startsWith('#/location') || hash.startsWith('#/facilities')) {
-        setCurrentRoute('campus');
+        nextRoute = 'campus';
       } else if (hash.startsWith('#/contact')) {
-        setCurrentRoute('contact');
+        nextRoute = 'contact';
       } else {
-        setCurrentRoute('home');
+        nextRoute = 'home';
       }
       
+      setCurrentRoute(nextRoute);
+
+      // Brief smooth skeleton loader trigger on route change
+      setIsLoading(true);
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+      }, 300);
+
       // Smooth scroll to top on page navigation
       window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      return () => clearTimeout(timer);
     };
 
     window.addEventListener('hashchange', handleHashChange);
@@ -89,19 +102,31 @@ export default function App() {
       <Navbar />
 
       {/* ------------------------------------------------------------------ */}
-      {/* MAIN CONTENT PORT: Animated view switcher                        */}
+      {/* MAIN CONTENT PORT: Animated view switcher or Skeleton Loader      */}
       {/* ------------------------------------------------------------------ */}
       <main className="relative z-10 pt-20">
         <AnimatePresence mode="wait">
-          {currentRoute === 'home' && (
+          {isLoading ? (
             <motion.div
-              key="home-page"
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.4 }}
-              className="space-y-0"
+              key={`skeleton-${currentRoute}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
             >
+              <PageSkeleton pageType={currentRoute} />
+            </motion.div>
+          ) : (
+            <React.Fragment key={currentRoute}>
+              {currentRoute === 'home' && (
+                <motion.div
+                  key="home-page"
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.4 }}
+                  className="space-y-0"
+                >
               {/* Landing Hero Screen with 3D shader wheel */}
               <LandingHeroSection />
 
@@ -361,6 +386,8 @@ export default function App() {
               <LocationAndMapSection />
             </motion.div>
           )}
+          </React.Fragment>
+        )}
         </AnimatePresence>
       </main>
 

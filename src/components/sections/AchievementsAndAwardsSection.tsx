@@ -16,6 +16,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { ACHIEVEMENTS } from '../../data/schoolData';
 import { AchievementItem } from '../../types';
 import { Trophy, Award, Filter, X, ChevronRight } from 'lucide-react';
+import { ImageWithSkeleton, AchievementCardSkeleton } from '../ui/Skeleton';
 
 export const AchievementsAndAwardsSection: React.FC = () => {
   // State for active category filter ('All', 'Sports', 'Academic', 'Cultural', 'Leadership')
@@ -98,20 +99,20 @@ export const AchievementsAndAwardsSection: React.FC = () => {
               >
                 {/* Image & Badge Container */}
                 <div className="relative h-56 w-full overflow-hidden bg-slate-100">
-                  <img
+                  <ImageWithSkeleton
                     src={item.imageUrl}
                     alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 brightness-95 group-hover:brightness-100"
+                    imgClassName="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 brightness-95 group-hover:brightness-100"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none z-10" />
 
                   {/* Category Tag */}
-                  <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md border border-slate-200 text-[11px] font-bold text-slate-900 shadow-md">
+                  <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md border border-slate-200 text-[11px] font-bold text-slate-900 shadow-md z-20">
                     {item.category} • {item.year}
                   </div>
 
                   {/* Highlight Stats Tag */}
-                  <div className="absolute bottom-4 left-4 px-3 py-1 rounded-xl bg-[#8B1538] backdrop-blur-md border border-rose-300/40 text-xs font-bold text-white shadow-lg flex items-center gap-1.5">
+                  <div className="absolute bottom-4 left-4 px-3 py-1 rounded-xl bg-[#8B1538] backdrop-blur-md border border-rose-300/40 text-xs font-bold text-white shadow-lg flex items-center gap-1.5 z-20">
                     <Trophy className="w-3.5 h-3.5 text-rose-200" />
                     <span>{item.statsTag}</span>
                   </div>
@@ -168,13 +169,13 @@ export const AchievementsAndAwardsSection: React.FC = () => {
                 </button>
 
                 <div className="relative h-64 w-full">
-                  <img
+                  <ImageWithSkeleton
                     src={selectedAchievement.imageUrl}
                     alt={selectedAchievement.title}
-                    className="w-full h-full object-cover"
+                    imgClassName="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
-                  <div className="absolute bottom-4 left-6">
+                  <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-neutral-800 via-transparent to-transparent pointer-events-none z-10" />
+                  <div className="absolute bottom-4 left-6 z-20">
                     <span className="px-3.5 py-1.5 rounded-full bg-[#8B1538] text-white font-bold text-xs shadow-md">
                       {selectedAchievement.statsTag}
                     </span>
