@@ -211,7 +211,7 @@ export const Navbar: React.FC = () => {
           {/* Admissions button redirects to #/contact page */}
           <div className="shrink-0">
             <SplitTextButton
-              href="#/contact"
+              href="/#/contact"
               text="Enroll Now"
               theme="maroon"
             />
