@@ -29,12 +29,15 @@ export const Navbar: React.FC = () => {
   const [transitionPhase, setTransitionPhase] = useState<'idle' | 'iris' | 'stagger'>('idle');
 
   useEffect(() => {
-    // Check initial dark mode preference
+    // Default is light mode (white). Only enable dark mode if explicitly chosen by user and stored in localStorage.
     if (typeof window !== 'undefined') {
       const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      if (savedTheme === 'dark') {
         setIsDarkMode(true);
         document.documentElement.classList.add('dark');
+      } else {
+        setIsDarkMode(false);
+        document.documentElement.classList.remove('dark');
       }
     }
 

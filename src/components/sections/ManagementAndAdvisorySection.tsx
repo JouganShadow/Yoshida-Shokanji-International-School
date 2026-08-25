@@ -13,7 +13,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { MANAGEMENT_MEMBERS, SCHOOL_NOTICES } from '../../data/schoolData';
-import { Users, Bell, Quote, Calendar, ShieldCheck, ArrowUpRight, ChevronRight } from 'lucide-react';
+import { Users, Bell, Quote, Calendar, ShieldCheck, ArrowUpRight, ChevronRight, User } from 'lucide-react';
 import { ImageWithSkeleton, ManagementCardSkeleton, NoticeCardSkeleton } from '../ui/Skeleton';
 
 /**
@@ -95,12 +95,18 @@ export const ManagementAndAdvisorySection: React.FC = () => {
                   
                   {/* Header Profile Info */}
                   <div className="flex items-center gap-5">
-                    <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-[#8B1538] shrink-0 shadow-lg bg-slate-100 flex items-center justify-center">
-                      <ImageWithSkeleton
-                        src={member.imageUrl}
-                        alt={member.name}
-                        imgClassName="w-full h-full object-cover"
-                      />
+                    <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-[#8B1538] shrink-0 shadow-lg bg-rose-50 dark:bg-neutral-800 flex items-center justify-center">
+                      {member.imageUrl ? (
+                        <ImageWithSkeleton
+                          src={member.imageUrl}
+                          alt={member.name}
+                          imgClassName="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-rose-100 to-rose-50 text-[#8B1538] p-2">
+                          <User className="w-8 h-8 sm:w-10 sm:h-10 opacity-80" />
+                        </div>
+                      )}
                     </div>
 
                     <div>

@@ -5,7 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    base: '/Yoshida-Shokanji-International-School/',
+    base: './',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {

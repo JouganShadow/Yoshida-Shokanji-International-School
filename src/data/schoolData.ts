@@ -13,6 +13,7 @@
  */
 
 import { SchoolStat, ResidentialArea, AchievementItem, ManagementMember, SchoolNotice } from '../types';
+import principaljpg from '../assets/principal.jpg';
 
 /**
  * ----------------------------------------------------------------------------
@@ -194,12 +195,12 @@ export const MANAGEMENT_MEMBERS: ManagementMember[] = [
     qualifications: 'Chairman & Founder, Chief Sangha Nayake of Japan',
   },
   {
-    id: 'headmaster',
-    name: 'Mr. Sisira De Silva',
-    role: 'Head Master & Disciplinarian',
-    bio: 'Head Master and Chief Disciplinarian leading academic administration, student conduct, co-curricular athletics, and moral welfare across the Sapugaskanda campus.',
-    imageUrl: 'https://yoshida.edu.lk/assets/img/team/HM.jpeg',
-    qualifications: 'Head Master & Disciplinarian',
+    id: 'ceo',
+    name: 'Mrs. Ambapali Sikurajapathy',
+    role: 'Chief Executive Officer',
+    bio: 'Chief Executive Officer directing operational strategy, academic standards, and institutional development across primary, secondary, and Cambridge streams.',
+    imageUrl: 'https://yoshida.edu.lk/assets/img/team/1.jpg',
+    qualifications: 'Chief Executive Officer',
   },
   {
     id: 'chief-advisor',
@@ -210,28 +211,28 @@ export const MANAGEMENT_MEMBERS: ManagementMember[] = [
     qualifications: 'Chief Advisor & Academic Director',
   },
   {
-    id: 'ceo',
-    name: 'Mrs. Ambapali Sikurajapathy',
-    role: 'Chief Executive Officer',
-    bio: 'Chief Executive Officer directing operational strategy, academic standards, and institutional development across primary, secondary, and Cambridge streams.',
-    imageUrl: 'https://yoshida.edu.lk/assets/img/team/1.jpg',
-    qualifications: 'Chief Executive Officer',
+    id: 'principal',
+    name: 'Ms. Buddhini Jayasundera',
+    role: 'Head of School & Principal',
+    bio: 'Head of School and Principal directing academic pedagogy, Cambridge International curriculum standards, faculty excellence, and student pastoral care across all grades.',
+    imageUrl: principaljpg,
+    qualifications: 'B.A., M.Ed. (Leadership in Education), Principal',
   },
   {
-    id: 'director-duminda',
-    name: 'Mr. Duminda Mayadunna',
-    role: 'Director',
-    bio: 'Member of the Board of Directors, overseeing strategic planning, administrative governance, and campus infrastructure development.',
-    imageUrl: 'https://yoshida.edu.lk/assets/img/team/WhatsApp%20Image%202025-03-13%20at%2010.28.00_91b63f29.jpg',
-    qualifications: 'Member of the Board of Directors',
+    id: 'headmaster',
+    name: 'Mr. Sisira De Silva',
+    role: 'Head Master & Disciplinarian',
+    bio: 'Head Master and Chief Disciplinarian leading academic administration, student conduct, co-curricular athletics, and moral welfare across the Sapugaskanda campus.',
+    imageUrl: 'https://yoshida.edu.lk/assets/img/team/HM.jpeg',
+    qualifications: 'Head Master & Disciplinarian',
   },
   {
-    id: 'director-prabath',
-    name: 'Dr. Prabath Weerasinghe',
-    role: 'Director',
-    bio: 'Member of the Board of Directors, providing academic oversight, health guidance, and research initiatives for student development.',
-    imageUrl: 'https://yoshida.edu.lk/assets/img/team/Dr%20Weerasinghe.jpg',
-    qualifications: 'Member of the Board of Directors',
+    id: 'headmistress',
+    name: 'Mrs. Milanthi Silva',
+    role: 'Headmistress',
+    bio: 'Headmistress overseeing foundational academic pedagogy, student pastoral care, primary learning initiatives, and teacher development across school divisions.',
+    imageUrl: 'https://yoshida.edu.lk/img/management/headmistress.jpg',
+    qualifications: 'Headmistress',
   },
 ];
 
